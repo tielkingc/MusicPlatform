@@ -11,13 +11,6 @@ nav .brand-logo {
   color: #444;
 }
 
-nav .brand-logo img {
-  width: 100%;
-  height: auto;
-  max-width: 80px;
-  max-height: 80px;
-}
-
 p {
   line-height: 2rem;
 }
@@ -62,4 +55,3 @@ p {
 footer.page-footer {
   margin: 0;
 }
-
