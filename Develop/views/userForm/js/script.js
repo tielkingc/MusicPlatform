@@ -1,8 +1,6 @@
-$(document).ready(function() {
-    $('select').formSelect();
-})
 
-var formResults = function(){
+
+var signUp = function(){
 
 
     var first_name = document.getElementById("first_name").value;
@@ -34,9 +32,23 @@ var formResults = function(){
         }
     };
 
-    console.log(first_name);
-    console.log(last_name);
-    console.log(email);
-    console.log(password);
-    console.log(genres);
+    if (genre1 && email && password) {
+        const response = fetch('/api/users', {
+          method: 'post',
+          body: JSON.stringify({
+            email,
+            password,
+            first_name,
+            last_name,
+            genres
+          }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+    
+        if (response.ok) {
+          document.location.replace('/dashboard/');
+        } else {
+          alert(response.statusText);
+        }
+      }
 }
