@@ -5,8 +5,8 @@
         <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:200">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link rel="stylesheet" href="stylesheets/community.css">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link rel="stylesheet" href="./css/community.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
         <!--Favicon-->
@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="box">
                     <div class="image">
-                        <img src="images/photo-1511671782779-c97d3d27a1d4.jpeg" alt="Microphone">
+                        <img src="./images/photo-1511671782779-c97d3d27a1d4.jpeg" alt="Microphone">
                     </div>
                 <div class="main">
                     <form action="" method="POST">
@@ -46,6 +46,19 @@
                     </form>
                 </div>
                 </div>
+                {{#if posts.length}}
+                <section>
+                <h2>Your Posts</h2>
+                <ol>
+                    {{#each posts as |post|}}
+                    <li>
+                    {{> post-info post}}
+                    <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+                    </li>
+                    {{/each}}
+                </ol>
+                </section>
+                {{/if}}
             </div>
         </section>
         

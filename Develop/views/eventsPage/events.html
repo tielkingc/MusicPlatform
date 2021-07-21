@@ -7,10 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <title>Events</title>
+
+    <style>
+    img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+    }
+    </style>
+    
 </head>
 
 <body>
-    <nav class="white" role="navigation">
+    <!-- <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
@@ -33,8 +43,8 @@
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
-    </nav>
-    <div w-type="event-discovery" w-tmapikey="bz4pDAkoqBgGaRl2E3fNUOQjJikthwgI"
+    </nav> -->
+    <div id="geolocation" w-type="event-discovery" w-tmapikey="bz4pDAkoqBgGaRl2E3fNUOQjJikthwgI"
         w-googleapikey="AIzaSyDcU0LF2egc1-fLJbfTdQ1SVQKyIqju6AA" w-keyword="" w-theme="oldschool" w-colorscheme="light"
         w-width="350" w-height="600" w-size="25" w-border="2" w-borderradius="4" w-postalcode="" w-radius="25" w-city=""
         w-period="week" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid=""
@@ -42,8 +52,21 @@
         w-titlelink="off" w-sorting="groupByName" w-id="id_5vo2c" w-countrycode="US" w-source=""
         w-branding="Ticketmaster" w-latlong="">
     </div>
+
+    <div class="carousel">
+        <a class="carousel-item" href="#one!"><img src="./images/hanny-naibaho-aWXVxy8BSzc-unsplash.jpg" alt="Community Feature Button"></a>
+        <a class="carousel-item" href="#two!"><img src="./images/jefferson-santos-fCEJGBzAkrU-unsplash.jpg" alt="Community Feature Button"></a>
+        <a class="carousel-item" href="#three!"><img src="./images/john-matychuk-gUK3lA3K7Yo-unsplash.jpg" alt="Community Feature Button"></a>
+        <a class="carousel-item" href="#four!"><img src="./images/marcela-laskoski-YrtFlrLo2DQ-unsplash (1).jpg" alt="Community Feature Button"></a>
+        <a class="carousel-item" href="#five"><img src="./images/nainoa-shizuru-NcdG9mK3PBY-unsplash.jpg" alt="Community Feature Button"></a>
+    </div>
 </body>
 <script
     src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js?v=1"></script>
-
+<script src="javascript/geolocation.js"></script>
+<script>
+$(document).ready(function(){
+  $('.carousel').carousel();
+});
+</script>
 </html>
