@@ -36,6 +36,18 @@ p {
     width: 100%;
   }
 
+.parallax img {
+  width: 100%;
+  height: auto;
+}
+
+#readytojoin {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+}
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
