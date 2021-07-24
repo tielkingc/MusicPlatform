@@ -62,11 +62,29 @@
     </div>
 </body>
 <script
-    src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js?v=1"></script>
-<script src="javascript/geolocation.js"></script>
+    src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js?v=1">
+</script>
 <script>
 $(document).ready(function(){
   $('.carousel').carousel();
 });
 </script>
+<!--Geolocation for Events-->
+<script>
+    var x=document.getElementById("demo");
+    function getLocation()
+     {
+    if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else{x.innerHTML="Geolocation is not supported by this browser.";}
+    }
+    function showPosition(position)
+    {
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;  
+    }
+    getLocation()
+    </script>
 </html>
