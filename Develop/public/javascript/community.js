@@ -10,7 +10,7 @@ server.listen(3001)
 
 //Rendering
 app.get('/home', (req, res) => {
-    res.render('index')
+    res.render('community')
 })
 
 server.listen(3001, () => {
