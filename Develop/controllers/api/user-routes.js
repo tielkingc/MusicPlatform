@@ -40,7 +40,14 @@ router.post('/', (req, res) => {
         password: req.body.password,
         genre3: req.body.strUser
     })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+        req.session.save(() => {
+            // declare session variables
+            req.session.user_id = dbUserData.id;
+            req.session.email = dbUserData.email;
+            req.session.loggedIn = true;
+        })
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err)
@@ -49,24 +56,33 @@ router.post('/', (req, res) => {
 
 router.post('/login', (req, res) => {
     User.findOne({
-        where: {
-            email: req.body.email
-        }
-    })
-    .then(dbUserData => {
-        if (!dbUserData) {
-            res.status(400).json({ message: 'No user with that email address!' });
-            return;
-        }
+    where: {
+      email: req.body.email
+    }
+  }).then(dbUserData => {
+      console.log(dbUserData)
+    if (!dbUserData) {
+        console.log(dbUserData)
+      res.status(400).json({ message: 'No user with that email address!' });
+      
+    }
 
-        const validPassword = dbUserData.checkPassword(req.body.password);
-        if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect password '});
-            return;
-        }
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
-        res.json({ user: dbUserData, message: 'You are now logged in!' });
-    })
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
+
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = dbUserData.id;
+      req.session.email = dbUserData.email;
+      req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
 })
 
 router.put('/:id', (req, res) => {
@@ -107,5 +123,19 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
     })
 });
+
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+          res.status(204).end();
+          res.render('/')
+        });
+      }
+      else {
+          console.log('herfdfs')
+        res.status(404).end();
+        res.render('/')
+      }
+})
 
 module.exports = router;

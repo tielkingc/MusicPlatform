@@ -116,7 +116,7 @@ var signUp = function(){
   var genre1 = genre1Select.options[genre1Select.selectedIndex].text;
   
   var genre2Select = document.getElementById("genre2");
-  var genre2 = genre2.options[genre2Select.selectedIndex].text;
+  var genre2 = genre2Select.options[genre2Select.selectedIndex].text;
 
   var genre3Select = document.getElementById("genre3");
   var genre3 = genre3Select.options[genre3Select.selectedIndex].text;
@@ -138,11 +138,9 @@ var signUp = function(){
         headers: { 'Content-Type': 'application/json' }
       });
 
-      if (response.ok) {
-        document.location.replace('../landingPage/landingPage.html');
-      } else {
-        alert(response.statusText);
-      }
+      
+        document.location.replace('/home');
+      
     }
 }
 </script>

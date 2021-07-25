@@ -9,7 +9,12 @@ router.get('/home', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('login')
+    if (req.session.loggedIn) {
+        res.redirect('/home');
+        return;
+    }
+    
+    res.render('login');
 })
 
 router.get('/signup', (req, res) => {
@@ -22,6 +27,20 @@ router.get('/community', (req, res) => {
 
 router.get('/events', (req, res) => {
     res.render('events')
+})
+
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+          res.status(204).end();
+          res.render('/')
+        });
+      }
+      else {
+          console.log('herfdfs')
+        res.status(404).end();
+        res.render('/')
+      }
 })
 
 module.exports = router;

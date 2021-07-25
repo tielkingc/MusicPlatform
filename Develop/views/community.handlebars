@@ -4,6 +4,7 @@
 <link href="stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 {{!-- <link rel="stylesheet" href="stylesheets/community.css"> --}}
 {{!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
+{{!-- <script type="module" src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script> --}}
 <section>
         <div class="row">
             <div class="com-container">
@@ -11,7 +12,7 @@
                     {{!-- <div class="image">
                         <img src="images/photo-1511671782779-c97d3d27a1d4.jpeg" alt="Microphone">
                     </div> --}}
-                <center><div class="main">
+                <center><div class="main teal-text">
                     <form class="new-post-form">
                         <textarea name="name" rows="8" cols="10" placeholder="What's on your mind?" id="post_content"></textarea>
                         <button type="submit" id="save-post" onclick="submitPost()">POST</button>
@@ -23,8 +24,38 @@
 
         <!--Socket.io-->
         <div>
-            
+        <div>
+            <p class="teal-text">
+            Want to chat with other users? Utilize our messaging feature below. Your message will go to those online who are also wanting to chat about the latest song, group, event, and more. 
+            Your message will send out and other users' messages will appear on your screen in real time!
+            </p>
+        </div>
+            <input type="text" class="message">
+                <button onclick="sendMessage()">Send Message</button>
+                <h1 class="indigo-text"></h1>
         </div>
 
 </section>
+<script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
 <script src="javascript/add-post.js"></script>
+<script type="module" src="javascript/community.js"></script>
+<script>
+        //Establish the connection to the socket server.
+        {{!-- const socket = io('http://localhost:3001/') --}}
+        const socket = io.connect('http://localhost:3001/')
+        //Links to our connections in index.js
+        //Establishes the connection. 
+        socket.on('connection')
+
+        socket.on('message', (data) => {
+            document.querySelector('h1').innerHTML = data;
+        })
+
+        const sendMessage = () => {
+            const messageInput = document.querySelector('.message')
+            const message = messageInput.value
+            socket.emit('message', message)
+        }
+
+</script>
+
