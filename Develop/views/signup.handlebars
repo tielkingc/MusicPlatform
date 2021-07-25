@@ -1,0 +1,148 @@
+<div class="row">
+        <form id="" class="col s12 signupform">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder= "First Name" id="first_name" type="text" class="validate">
+              <label></label>
+            </div>
+            <div class="input-field col s6">
+              <input placeholder= "Last Name" id="last_name" type="text" class="validate">
+              <label for="last_name"></label>
+            </div>
+          </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder= "Password" id="password" type="password" class="validate">
+              <label for="password"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder= "Email" id="email" type="email" class="validate">
+              <label for="email"></label>
+            </div>
+          </div>
+    
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <select id="genre1">
+              <option value="" selected>Choose your option</option>
+              <option value="Country">Country</option>
+              <option value="Electric">Electric</option>
+              <option value="Funk">Funk</option>
+              <option value="Hip Hop">Hip Hop</option>
+              <option value="Jazz">Jazz</option>
+              <option value="Latin">Latin</option>
+              <option value="Pop">Pop</option>
+              <option value="Punk">Punk</option>
+              <option value="Reggae">Reggae</option>
+              <option value="Rock">Rock</option>
+              <option value="Metal">Metal</option>
+              <option value="Soul">Soul and R&B</option>
+              <option value="Polka">Polka</option>
+            </select>
+            <label>Top Favorite Genre</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <select  id="genre2">
+             <option value="" selected>Choose your option</option>
+             <option value="Country">Country</option>
+             <option value="Electric">Electric</option>
+             <option value="Funk">Funk</option>
+             <option value="Hip Hop">Hip Hop</option>
+             <option value="Jazz">Jazz</option>
+             <option value="Latin">Latin</option>
+             <option value="Pop">Pop</option>
+             <option value="Punk">Punk</option>
+             <option value="Reggae">Reggae</option>
+             <option value="Rock">Rock</option>
+             <option value="Metal">Metal</option>
+             <option value="Soul">Soul and R&B</option>
+             <option value="Polka">Polka</option>
+            </select>
+            <label>Second Favorite Genre</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <select class="select" id="genre3">
+                <option value="" selected>Choose your option</option>
+                <option value="Country">Country</option>
+                <option value="Electric">Electric</option>
+                <option value="Funk">Funk</option>
+                <option value="Hip Hop">Hip Hop</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Latin">Latin</option>
+                <option value="Pop">Pop</option>
+                <option value="Punk">Punk</option>
+                <option value="Reggae">Reggae</option>
+                <option value="Rock">Rock</option>
+                <option value="Metal">Metal</option>
+                <option value="Soul and R&B">Soul and R&B</option>
+                <option value="Polka">Polka</option>
+              </select>
+              <label>Third Favorite Genre</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <button class="btn waves-effect waves-light btn-large" type="submit" onclick="signUp()">Submit<i class="material-icons right">send</i></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select').formSelect();
+})
+
+var signUp = function(){
+
+
+  var first_name = document.getElementById("first_name").value;
+  console.log(first_name)
+
+  var last_name = document.getElementById("last_name").value;
+
+  var password = document.getElementById("password").value;
+
+  var email = document.getElementById("email").value;
+
+  // var genre1 = document.getElementById("genre1").options.selected
+  // var first_name_value = first_name.value;
+  var genre1Select = document.getElementById("genre1");
+  var genre1 = genre1Select.options[genre1Select.selectedIndex].text;
+  
+  var genre2Select = document.getElementById("genre2");
+  var genre2 = genre2.options[genre2Select.selectedIndex].text;
+
+  var genre3Select = document.getElementById("genre3");
+  var genre3 = genre3Select.options[genre3Select.selectedIndex].text;
+  
+
+
+  if (email && password) {
+      const response = fetch('/api/users', {
+        method: 'post',
+        body: JSON.stringify({
+          first_name,
+          last_name,
+          email,
+          password,
+          genre1,
+          genre2,
+          genre3
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (response.ok) {
+        document.location.replace('../landingPage/landingPage.html');
+      } else {
+        alert(response.statusText);
+      }
+    }
+}
+</script>
