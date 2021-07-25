@@ -1,1 +1,1 @@
-# MusicPlatform
+# just-tech-news
