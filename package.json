@@ -1,19 +1,34 @@
 {
-  "name": "musicplatform",
+  "name": "just-tech-news",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tielkingc/MusicPlatform.git"
+    "url": "git+https://github.com/tielkingc/just-tech-news.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tielkingc/MusicPlatform/issues"
+    "url": "https://github.com/tielkingc/just-tech-news/issues"
   },
-  "homepage": "https://github.com/tielkingc/MusicPlatform#readme"
+  "homepage": "https://github.com/tielkingc/just-tech-news#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^7.1.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5",
+    "socket.io": "^4.1.3"
+  }
 }
