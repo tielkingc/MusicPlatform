@@ -44,10 +44,6 @@ User.init(
         genre3: {
             type: DataTypes.STRING,
             allowNull: true
-        },
-        logged: {
-            type: DataTypes.STRING,
-            allowNull: false
         }
     },
     {
