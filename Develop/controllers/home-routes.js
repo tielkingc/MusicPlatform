@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Post, User } = require('../models');
 
 router.get('/', (req, res) => {
     res.render('homepage')
@@ -22,7 +23,19 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/community', (req, res) => {
-    res.render('community')
+    Post.findAll({
+        attribues: ['id', 'post_content', 'created_at'],
+        include : [
+            {
+                model: User,
+                attributes: ['first_name', 'last_name']
+            }
+        ]
+    })
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({ plain: true }));
+        res.render('community', {posts})
+    })
 })
 
 router.get('/events', (req, res) => {

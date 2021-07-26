@@ -29,6 +29,8 @@
   * Express.js
   * Handlebars.js
   * MySQL and the Sequelize ORM
+  * [Body Parser](https://www.npmjs.com/package/body-parser)
+  * [Cookie Parser](https://www.npmjs.com/package/cookie-parser)
   * [Socket.io](https://socket.io/docs/v4/) 
   * [The Discovery Ticketmaster API](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/)
 

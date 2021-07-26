@@ -13,11 +13,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // To parse cookies from the HTTP Request
 app.use(cookieParser());
 
+<<<<<<< HEAD
 app.engine('handlesbars', ExpressHandlebars({
     extname: '.handlesbars'
 }));
 
 app.set('view engine', 'handlesbars');
+=======
+// app.engine('handlesbars', ExpressHandlebars({
+//     extname: '.handlesbars'
+// }));
+
+// app.set('view engine', 'handlesbars');
+>>>>>>> 496b8853cf0039cd3ddbf6ac5c13ff8dbe86563b
 
 // Our requests handlers will be implemented here...
 
@@ -145,6 +153,7 @@ router.post('/', (req, res) => {
 //         res.status(500).json(err);
 //     })
 // });
+<<<<<<< HEAD
 
 // router.post('/logout', (req, res) => {
 //     if (req.session.loggedIn) {
@@ -168,6 +177,31 @@ const generateAuthToken = () => {
     return crypto.randomBytes(30).toString('hex');
 }
 
+=======
+
+// router.post('/logout', (req, res) => {
+//     if (req.session.loggedIn) {
+//         req.session.destroy(() => {
+//           res.status(204).end();
+//           res.render('/')
+//         });
+//       }
+//       else {
+//           console.log('herfdfs')
+//         res.status(404).end();
+//         res.render('/')
+//       }
+// })
+
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+const generateAuthToken = () => {
+    return crypto.randomBytes(30).toString('hex');
+}
+
+>>>>>>> 496b8853cf0039cd3ddbf6ac5c13ff8dbe86563b
 const authTokens = {};
 
 app.post('/login', (req, res) => {
@@ -188,8 +222,14 @@ app.post('/login', (req, res) => {
         res.cookie('AuthToken', authToken);
 
         // Redirect user to the protected page
+<<<<<<< HEAD
         res.redirect('/protected');
     } else {
+=======
+        res.redirect('/home');
+    } else {
+        alert('Wrong')
+>>>>>>> 496b8853cf0039cd3ddbf6ac5c13ff8dbe86563b
         res.render('login', {
             message: 'Invalid username or password',
             messageClass: 'alert-danger'
@@ -207,15 +247,22 @@ app.use((req, res, next) => {
     next();
 });
 
+<<<<<<< HEAD
 app.get('/community', (req, res) => {
     if (req.user) {
         res.render('community');
+=======
+const requireAuth = (req, res, next) => {
+    if (req.user) {
+        next();
+>>>>>>> 496b8853cf0039cd3ddbf6ac5c13ff8dbe86563b
     } else {
         res.render('login', {
             message: 'Please login to continue',
             messageClass: 'alert-danger'
         });
     }
+<<<<<<< HEAD
 });
 
 const requireAuth = (req, res, next) => {
@@ -227,12 +274,15 @@ const requireAuth = (req, res, next) => {
             messageClass: 'alert-danger'
         });
     }
+=======
+>>>>>>> 496b8853cf0039cd3ddbf6ac5c13ff8dbe86563b
 };
 
 app.get('/events', requireAuth, (req, res) => {
     res.render('events');
 });
 
+<<<<<<< HEAD
 app.get('/events', (req, res) => {
     if (req.user) {
         res.render('events');
@@ -254,5 +304,10 @@ const requireAuth = (req, res, next) => {
         });
     }
 };
+=======
+app.get('/community', requireAuth, (req, res) => {
+    res.render('community');
+});
+>>>>>>> 496b8853cf0039cd3ddbf6ac5c13ff8dbe86563b
 
 module.exports = router;

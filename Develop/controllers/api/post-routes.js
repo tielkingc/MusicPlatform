@@ -5,7 +5,6 @@ router.get('/', (req, res) => {
     console.log("======================");
     Post.findAll({
         attribues: ['id', 'post_content', 'created_at'],
-        order: [['created_at', 'DESC']],
         include : [
             {
                 model: User,

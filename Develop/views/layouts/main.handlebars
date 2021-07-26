@@ -25,14 +25,13 @@
       <ul id="nav-mobile" class="sidenav">
         <li><a id="logoutButton" href="/logout" style="display: none;">Log Out</a></li>
       </ul>
-      |
       {{!-- <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> --}}
       <ul class="right hide-on-med-and-down">
-        <li><a href="/login" onclick="showButton();">Log In</a></li>
+        <li><a id="loginbutton" href="/login">Log In</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="/login"onclick="showButton();">Log In</a></li>
+        <li><a id="loginbutton" href="/login">Log In</a></li>
       </ul>
     </div>
   </nav>
@@ -83,8 +82,11 @@
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="javascript/materialize.js"></script>
-  <script src="javascript/init.js"></script>
-<!--GeoLocation Script-->
-  <script src="javascript/logout.js"></script>
+  
+  {{!-- <script>
+    if (req.session.loggedIn === true) {
+    showButton();
+    }
+  </script> --}}
 </body>
 </html>
