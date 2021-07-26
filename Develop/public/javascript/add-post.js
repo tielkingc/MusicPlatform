@@ -21,11 +21,6 @@ var submitPost = function() {
     }
   });
 
-  if (response.ok) {
-    document.location.replace('/community');
-  } else {
-    alert(response.statusText);
-  }
 }
 
 // if (window.location.pathname === '/notes') {

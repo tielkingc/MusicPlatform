@@ -58,7 +58,7 @@ router.post('/login', (req, res) => {
     User.findOne({
     where: {
       email: req.body.email
-    }
+    },
   }).then(dbUserData => {
       console.log(dbUserData)
     if (!dbUserData) {
@@ -137,5 +137,42 @@ router.post('/logout', (req, res) => {
         res.render('/')
       }
 })
+
+
+// var sessionId = req.cookies.session;
+// if (
+//     !sessionId ||
+//     sessionId.search(/^[A-Fa-f0-9]+$/) == -1
+// ) {
+//     res.locals.loggedIn = false;
+//     next();
+//     return;
+// }   
+// Session.findOne({sessionId: sessionId}).select('timeStamp username').exec(function(err, session) {
+//     if (err) throw new Error(err);
+//     if (!session) {
+//         res.locals.loggedIn = false;
+//         next();
+//         return;
+//     }
+//     var now = (new Date()).getTime();
+//     if (!session.timeStamp || (now - session.timeStamp > sessionTimeout)) { 
+//         res.locals.loggedIn = false;
+//         next();
+//         return;
+//     }
+//     User.findOne({username: session.username}).select('name').exec(function(err, user) {
+//         if (err) throw new Error(err);
+//         if (!user) {
+//             res.locals.loggedIn = false;
+//             next();
+//             return;
+//         }
+//         res.locals.loggedIn = true;
+//         res.locals.fullName = `${user.name.firstname} ${user.name.lastname}`;
+//         next();
+//     });
+// });
+// };
 
 module.exports = router;

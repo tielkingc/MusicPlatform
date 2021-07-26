@@ -5,7 +5,6 @@ router.get('/', (req, res) => {
     console.log("======================");
     Post.findAll({
         attribues: ['id', 'post_content', 'created_at'],
-        order: [['created_at', 'DESC']],
         include : [
             {
                 model: User,
@@ -13,7 +12,11 @@ router.get('/', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({ plain: true }));
+        res.json(dbPostData)
+        res.render('/community', { posts})
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);

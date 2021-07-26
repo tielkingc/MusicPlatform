@@ -49,11 +49,7 @@ p {
 }
 
 footer {
-<<<<<<< HEAD
-  position: static;
-=======
   position: sticky;
->>>>>>> e5ea7445bdb3590c6345a5c41f88e53398637c0d
   left: 0;
   bottom: 0;
   width: 100%;

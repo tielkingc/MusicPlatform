@@ -41,10 +41,12 @@
   </main>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <!--Logout Button Script-->
+  <script src="javascript/logout.js"></script>
   <script>
     var login = function() {
     const email = document.querySelector('#email').value.trim();
-  const password = document.querySelector('#password').value.trim();
+    const password = document.querySelector('#password').value.trim();
 
   if (email && password) {
     const response = fetch('/api/users/login', {
@@ -61,6 +63,9 @@
     } else {
       alert(response.statusText);
     }
+    
   }
     }
+
+    showButton();
   </script>
